@@ -1,0 +1,15 @@
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\selenium-manager\linux\selenium-manager
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\selenium-manager\macos\selenium-manager
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\selenium-manager\windows\selenium-manager.exe
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\SeleniumTests.deps.json
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\SeleniumTests.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\SeleniumTests.pdb
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.csproj.AssemblyReference.cache
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.AssemblyInfoInputs.cache
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.AssemblyInfo.cs
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.csproj.CoreCompileInputs.cache
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\refint\SeleniumTests.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.pdb
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\ref\SeleniumTests.dll
