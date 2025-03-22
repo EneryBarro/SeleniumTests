@@ -1,0 +1,12 @@
+2025-03-21 14:41:55.2842|INFO|Tests.LoginTests|Setting up WebDriver and opening the browser
+2025-03-21 14:41:57.4276|INFO|Tests.LoginTests|Starting test with Username: , Password: 
+2025-03-21 14:41:57.8149|WARN|Tests.LoginTests|Login failed with expected error: Epic sadface: Username is required
+2025-03-21 14:41:57.8149|INFO|Tests.LoginTests|Closing browser
+2025-03-21 14:41:57.9723|INFO|Tests.LoginTests|Setting up WebDriver and opening the browser
+2025-03-21 14:42:00.2895|INFO|Tests.LoginTests|Starting test with Username: standard_user, Password: 
+2025-03-21 14:42:00.6800|WARN|Tests.LoginTests|Login failed with expected error: Epic sadface: Password is required
+2025-03-21 14:42:00.6800|INFO|Tests.LoginTests|Closing browser
+2025-03-21 14:42:00.8471|INFO|Tests.LoginTests|Setting up WebDriver and opening the browser
+2025-03-21 14:42:03.0274|INFO|Tests.LoginTests|Starting test with Username: standard_user, Password: secret_sauce
+2025-03-21 14:42:03.5082|INFO|Tests.LoginTests|Login successful, navigated to Swag Labs
+2025-03-21 14:42:03.5082|INFO|Tests.LoginTests|Closing browser

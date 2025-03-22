@@ -13,3 +13,10 @@ C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.
 C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\refint\SeleniumTests.dll
 C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.pdb
 C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\ref\SeleniumTests.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\NUnit3.TestAdapter.pdb
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\nunit.engine.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\nunit.engine.api.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\nunit.engine.core.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\testcentric.engine.metadata.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\bin\Debug\net8.0\NUnit3.TestAdapter.dll
+C:\Users\denin\Desktop\EPAM_Net\29.1\SeleniumTests\SeleniumTests\obj\Debug\net8.0\SeleniumTests.sourcelink.json
