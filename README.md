@@ -20,6 +20,7 @@ The tests are performed using different browsers (Chrome and Edge) and use the f
 - **Assertions**: Fluent Assertions
 - **Logging**: NLog
 - **Parallel Execution**: Configured in `.runsettings` file
+- **BDD**: Reqnroll
 
 ## Prerequisites
 
@@ -30,6 +31,7 @@ To run the tests, ensure that the following tools are installed:
 3. **Selenium WebDriver** and **FluentAssertions** packages from NuGet
 4. **MSTest** test framework (via NuGet)
 5. **NLog** for logging
+6. **Reqnroll** for BDD
 
 ## Setup
 
