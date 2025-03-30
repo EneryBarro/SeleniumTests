@@ -3345,11 +3345,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\denin\\Desktop\\TEst1\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj",
+      "projectPath": "C:\\Users\\denin\\Desktop\\TEst1\\Tests\\Tests.csproj",
       "packagesPath": "C:\\Users\\denin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\obj\\",
+      "outputPath": "C:\\Users\\denin\\Desktop\\TEst1\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
