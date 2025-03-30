@@ -63,6 +63,8 @@ Make sure the following packages are installed:
 
 - MSTest.TestFramework
 
+- Reqnroll
+
 ### 3. Configure the WebDriver
 
 The project uses the **ChromeDriver** and **EdgeDriver** for testing. Ensure that the corresponding drivers are in your system’s PATH.
