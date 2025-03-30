@@ -20,7 +20,7 @@ The tests are performed using different browsers (Chrome and Edge) and use the f
 - **Assertions**: Fluent Assertions
 - **Logging**: NLog
 - **Parallel Execution**: Configured in `.runsettings` file
-- **BDD**: Reqnroll
+- **BDD**: Reqnroll (basic implementation in file LoginSteps.cs)
 
 ## Prerequisites
 
