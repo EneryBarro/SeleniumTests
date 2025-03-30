@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\denin\\Desktop\\EPAM_Net\\29.1\\SeleniumTests\\Tests\\Tests.csproj": {}
+    "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\denin\\Desktop\\EPAM_Net\\29.1\\SeleniumTests\\Tests\\Tests.csproj": {
+    "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denin\\Desktop\\EPAM_Net\\29.1\\SeleniumTests\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\29.1\\SeleniumTests\\Tests\\Tests.csproj",
+        "projectPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\Tests.csproj",
         "packagesPath": "C:\\Users\\denin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\29.1\\SeleniumTests\\Tests\\obj\\",
+        "outputPath": "C:\\Users\\denin\\Desktop\\EPAM_Net\\30\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -81,6 +81,18 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Reqnroll": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Reqnroll.NUnit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Reqnroll.Tools.MsBuild.Generation": {
+              "target": "Package",
+              "version": "[2.4.0, )"
             },
             "Selenium.Support": {
               "target": "Package",
