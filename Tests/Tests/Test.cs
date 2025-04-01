@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using NLog;
 using FluentAssertions;
 using Tests.Pages;
@@ -14,7 +13,7 @@ namespace Tests.Tests
     public class LoginTests
     {
         private IWebDriver driver = null!;
-        private WebDriverWait wait = null!;
+        private IWaitStrategy waitStrategy = null!;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private LoginPage loginPage = null!;
 
@@ -27,8 +26,9 @@ namespace Tests.Tests
         [TestMethod]
         [TestCategory("UC-1")]
         [TestCategory("Parallel")]
-        [DataRow("chrome", "", "", "Username is required")]
-        [DataRow("edge", "", "", "Username is required")]
+        [DataRow("chrome", "standard_user", "secret_sauce", "Username is required")]
+        [DataRow("edge", "standard_user", "secret_sauce", "Username is required")]
+        [DataRow("firefox", "standard_user", "secret_sauce", "Username is required")]
         [Parallelizable(ParallelScope.Self)]
         public void TestLoginWithEmptyCredentials(string browser, string username, string password, string expectedMessage)
         {
@@ -40,22 +40,17 @@ namespace Tests.Tests
             loginPage.ClearInputs();
             loginPage.ClickLogin();
 
-            string errorMessage = loginPage.GetErrorMessage();
-
-            Logger.Info("Verifying error message for empty credentials");
-            errorMessage.Should().NotBeNullOrWhiteSpace("Error message should be displayed when username and password are empty.");
-            Logger.Info($"Error message is: {errorMessage}");
-
-            errorMessage.Should().Contain(expectedMessage, $"Expected error message to contain '{expectedMessage}' but was '{errorMessage}'");
-            Logger.Info($"Verified that error message contains: {expectedMessage}");
+            var errorMessage = loginPage.GetErrorMessage();
+            Logger.Info($"Verifying error message: {errorMessage}");
+            errorMessage.Should().Contain(expectedMessage);
         }
-
 
         [TestMethod]
         [TestCategory("UC-2")]
         [TestCategory("Parallel")]
-        [DataRow("chrome", "standard_user", "", "Password is required")]
-        [DataRow("edge", "standard_user", "", "Password is required")]
+        [DataRow("chrome", "standard_user", "secret_sauce", "Password is required")]
+        [DataRow("edge", "standard_user", "secret_sauce", "Password is required")]
+        [DataRow("firefox", "standard_user", "secret_sauce", "Password is required")]
         [Parallelizable(ParallelScope.Self)]
         public void TestLoginWithOnlyUsername(string browser, string username, string password, string expectedMessage)
         {
@@ -64,56 +59,40 @@ namespace Tests.Tests
 
             loginPage.EnterUsername(username);
             loginPage.EnterPassword(password);
-            loginPage.ClearInputs();
+            loginPage.ClearPassword();
             loginPage.ClickLogin();
 
-            string errorMessage = loginPage.GetErrorMessage();
-
-            Logger.Info("Verifying error message for missing password");
-            errorMessage.Should().NotBeNullOrWhiteSpace("Error message should be displayed when password is empty.");
-            Logger.Info($"Error message is: {errorMessage}");
-
-            errorMessage.Should().Contain(expectedMessage, $"Expected error message to contain '{expectedMessage}', but was '{errorMessage}'");
-            Logger.Info($"Verified that error message contains: {expectedMessage}");
+            var errorMessage = loginPage.GetErrorMessage();
+            Logger.Info($"Verifying error message: {errorMessage}");
+            errorMessage.Should().Contain(expectedMessage);
         }
-
 
         [TestMethod]
         [TestCategory("UC-3")]
         [TestCategory("Parallel")]
         [DataRow("chrome", "standard_user", "secret_sauce")]
         [DataRow("edge", "standard_user", "secret_sauce")]
+        [DataRow("firefox", "standard_user", "secret_sauce")]
         [Parallelizable(ParallelScope.Self)]
         public void TestLoginWithValidCredentials(string browser, string username, string password)
         {
             Logger.Info($"Executing TestLoginWithValidCredentials on {browser}");
             SetupDriver(browser);
 
-            loginPage.Should().NotBeNull("LoginPage instance should be initialized.");
-            driver.Should().NotBeNull("WebDriver should be initialized.");
-
             loginPage.EnterUsername(username);
             loginPage.EnterPassword(password);
-            loginPage.ClearInputs();
             loginPage.ClickLogin();
 
-            wait.Until(d => d.Title.Contains("Swag Labs"));
-
-            Logger.Info("Verifying the page title after successful login");
-            driver.Title.Should().NotBeNullOrWhiteSpace("Page title should not be empty after login.");
-            Logger.Info($"Page title is: {driver.Title}");
-
-            driver.Title.Should().Be("Swag Labs", "User should be redirected to the Swag Labs page after successful login.");
-            Logger.Info($"Verified that page title is 'Swag Labs'.");
+            waitStrategy.WaitForElement(driver, By.TagName("title"));
+            driver.Title.Should().Be("Swag Labs");
+            Logger.Info("Successfully navigated to Swag Labs page.");
         }
-
 
         [TestCleanup]
         public void Teardown()
         {
             Logger.Info("Closing browser");
             driver?.Quit();
-            Logger.Info("Browser closed successfully");
         }
 
         private void SetupDriver(string browser)
@@ -123,10 +102,10 @@ namespace Tests.Tests
             {
                 IDriverFactory driverFactory = new DriverFactory(browser);
                 driver = driverFactory.CreateDriver();
-                wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                waitStrategy = new ExplicitWaitStrategy(10);
                 driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl(LoginPage.Url);
-                loginPage = new LoginPage(driver);
+                loginPage = new LoginPage(driver, waitStrategy);
             }
             catch (WebDriverException ex)
             {

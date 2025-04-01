@@ -2,8 +2,7 @@
 using OpenQA.Selenium;
 using FluentAssertions;
 using Tests.Pages;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using Tests.Utils;
 
 namespace Tests.Steps
 {
@@ -12,16 +11,17 @@ namespace Tests.Steps
     {
         private IWebDriver driver = null!;
         private LoginPage loginPage = null!;
-        private WebDriverWait wait = null!;
+        private IWaitStrategy waitStrategy = null!;
 
-        [Given(@"I navigate to the login page")]
-        public void GivenINavigateToTheLoginPage()
+        [Given(@"I navigate to the login page with ""(.*)""")]
+        public void GivenINavigateToTheLoginPage(string browser)
         {
-            driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IDriverFactory driverFactory = new DriverFactory(browser);
+            driver = driverFactory.CreateDriver();
+            waitStrategy = new ExplicitWaitStrategy(10);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(LoginPage.Url);
-            loginPage = new LoginPage(driver);
+            loginPage = new LoginPage(driver, waitStrategy);
         }
 
         [When(@"I enter username ""(.*)"" and password ""(.*)""")]
@@ -29,6 +29,29 @@ namespace Tests.Steps
         {
             loginPage.EnterUsername(username);
             loginPage.EnterPassword(password);
+        }
+
+        [When(@"I perform ""(.*)"" on input fields")]
+        public void WhenIPerformActionOnInputFields(string action)
+        {
+            switch (action.ToLower())
+            {
+                case "clear both input fields":
+                    loginPage.ClearInputs();
+                    break;
+                case "clear only password field":
+                    loginPage.ClearPassword();
+                    break;
+                case "do not clear fields":
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown action: {action}");
+            }
+        }
+
+        [When(@"I click the login button")]
+        public void WhenIClickTheLoginButton()
+        {
             loginPage.ClickLogin();
         }
 
@@ -42,7 +65,7 @@ namespace Tests.Steps
         [Then(@"I should be redirected to the ""(.*)"" page")]
         public void ThenIShouldBeRedirectedToThePage(string expectedPageTitle)
         {
-            wait.Until(d => d.Title.Contains(expectedPageTitle));
+            waitStrategy.WaitForElement(driver, By.TagName("title"));
             driver.Title.Should().Be(expectedPageTitle);
         }
 

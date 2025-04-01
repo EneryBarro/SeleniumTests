@@ -3,20 +3,23 @@
   I want to log in to the system
   So that I can access my account
 
-  Scenario: Login with empty credentials
-    Given I navigate to the login page
-    When I enter username "" and password ""
-    Then I should see the error message "Username is required"
+  Scenario Outline: Login attempt with different input clearing
+    Given I navigate to the login page with "<browser>"
+    When I enter username "<username>" and password "<password>"
+    And I perform "<clear_action>" on input fields
+    And I click the login button
+    Then <result>
 
-  Scenario: Login with only username
-    Given I navigate to the login page
-    When I enter username "standard_user" and password ""
-    Then I should see the error message "Password is required"
-
-  Scenario: Login with valid credentials
-    Given I navigate to the login page
-    When I enter username "standard_user" and password "secret_sauce"
-    Then I should be redirected to the "Swag Labs" page
-
+    Examples:
+      | browser  | username      | password     | clear_action              | result                                                |
+      | chrome   | standard_user | secret_sauce | clear both input fields   | I should see the error message "Username is required" |
+      | chrome   | standard_user | secret_sauce | clear only password field | I should see the error message "Password is required" |
+      | chrome   | standard_user | secret_sauce | do not clear fields       | I should be redirected to the "Swag Labs" page        |
+      | edge     | standard_user | secret_sauce | clear both input fields   | I should see the error message "Username is required" |
+      | edge     | standard_user | secret_sauce | clear only password field | I should see the error message "Password is required" |
+      | edge     | standard_user | secret_sauce | do not clear fields       | I should be redirected to the "Swag Labs" page        |
+      | firefox  | standard_user | secret_sauce | clear both input fields   | I should see the error message "Username is required" |
+      | firefox  | standard_user | secret_sauce | clear only password field | I should see the error message "Password is required" |
+      | firefox  | standard_user | secret_sauce | do not clear fields       | I should be redirected to the "Swag Labs" page        |
 
 

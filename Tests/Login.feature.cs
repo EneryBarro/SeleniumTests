@@ -83,12 +83,26 @@ namespace Tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with empty credentials")]
-        public async System.Threading.Tasks.Task LoginWithEmptyCredentials()
+        [NUnit.Framework.DescriptionAttribute("Login attempt with different input clearing")]
+        [NUnit.Framework.TestCaseAttribute("chrome", "standard_user", "secret_sauce", "clear both input fields", "I should see the error message \"Username is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("chrome", "standard_user", "secret_sauce", "clear only password field", "I should see the error message \"Password is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("chrome", "standard_user", "secret_sauce", "do not clear fields", "I should be redirected to the \"Swag Labs\" page", null)]
+        [NUnit.Framework.TestCaseAttribute("edge", "standard_user", "secret_sauce", "clear both input fields", "I should see the error message \"Username is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("edge", "standard_user", "secret_sauce", "clear only password field", "I should see the error message \"Password is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("edge", "standard_user", "secret_sauce", "do not clear fields", "I should be redirected to the \"Swag Labs\" page", null)]
+        [NUnit.Framework.TestCaseAttribute("firefox", "standard_user", "secret_sauce", "clear both input fields", "I should see the error message \"Username is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("firefox", "standard_user", "secret_sauce", "clear only password field", "I should see the error message \"Password is required\"", null)]
+        [NUnit.Framework.TestCaseAttribute("firefox", "standard_user", "secret_sauce", "do not clear fields", "I should be redirected to the \"Swag Labs\" page", null)]
+        public async System.Threading.Tasks.Task LoginAttemptWithDifferentInputClearing(string browser, string username, string password, string clear_Action, string result, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with empty credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("browser", browser);
+            argumentsOfScenario.Add("username", username);
+            argumentsOfScenario.Add("password", password);
+            argumentsOfScenario.Add("clear_action", clear_Action);
+            argumentsOfScenario.Add("result", result);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login attempt with different input clearing", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,73 +114,19 @@ namespace Tests
             {
                 await this.ScenarioStartAsync();
 #line 7
-    await testRunner.GivenAsync("I navigate to the login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync(string.Format("I navigate to the login page with \"{0}\"", browser), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 8
-    await testRunner.WhenAsync("I enter username \"\" and password \"\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync(string.Format("I enter username \"{0}\" and password \"{1}\"", username, password), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 9
-    await testRunner.ThenAsync("I should see the error message \"Username is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.AndAsync(string.Format("I perform \"{0}\" on input fields", clear_Action), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with only username")]
-        public async System.Threading.Tasks.Task LoginWithOnlyUsername()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with only username", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
+    await testRunner.AndAsync("I click the login button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
 #line 11
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 12
-    await testRunner.GivenAsync("I navigate to the login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 13
-    await testRunner.WhenAsync("I enter username \"standard_user\" and password \"\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 14
-    await testRunner.ThenAsync("I should see the error message \"Password is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with valid credentials")]
-        public async System.Threading.Tasks.Task LoginWithValidCredentials()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 16
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 17
-    await testRunner.GivenAsync("I navigate to the login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 18
-    await testRunner.WhenAsync("I enter username \"standard_user\" and password \"secret_sauce\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 19
-    await testRunner.ThenAsync("I should be redirected to the \"Swag Labs\" page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync(string.Format("{0}", result), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
